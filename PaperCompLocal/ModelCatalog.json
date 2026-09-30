@@ -1,0 +1,73 @@
+{
+  "models": [
+    {
+      "id": "gemma4-e2b-q4",
+      "name": "Gemma 4 E2B Q4_K_M",
+      "shortName": "Gemma 4 E2B",
+      "downloadURL": "https://huggingface.co/unsloth/gemma-4-E2B-it-GGUF/resolve/main/gemma-4-E2B-it-Q4_K_M.gguf",
+      "fileName": "gemma-4-E2B-it-Q4_K_M.gguf",
+      "byteSize": 3106738272,
+      "isDefault": true,
+      "usesThinking": false,
+      "mayExceedMemoryOn8GB": false,
+      "nCtx": 8192,
+      "promptFormat": "gemma4",
+      "projectorURL": "https://huggingface.co/unsloth/gemma-4-E2B-it-GGUF/resolve/main/mmproj-F16.gguf",
+      "projectorFileName": "gemma-4-E2B-mmproj-F16.gguf",
+      "projectorByteSize": 985654080
+    },
+    {
+      "id": "gemma4-e4b-q4",
+      "name": "Gemma 4 E4B Q4_K_M",
+      "shortName": "Gemma 4 E4B",
+      "downloadURL": "https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF/resolve/main/gemma-4-E4B-it-Q4_K_M.gguf",
+      "fileName": "gemma-4-E4B-it-Q4_K_M.gguf",
+      "byteSize": 4977171584,
+      "isDefault": false,
+      "usesThinking": false,
+      "mayExceedMemoryOn8GB": true,
+      "nCtx": 8192,
+      "promptFormat": "gemma4",
+      "projectorURL": "https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF/resolve/main/mmproj-F16.gguf",
+      "projectorFileName": "gemma-4-E4B-mmproj-F16.gguf",
+      "projectorByteSize": 990372672
+    },
+    {
+      "id": "qwen3-1.7b-q4",
+      "name": "Qwen3 1.7B Q4_K_M",
+      "shortName": "Qwen3 1.7B",
+      "note": "Fast but weak",
+      "downloadURL": "https://huggingface.co/unsloth/Qwen3-1.7B-GGUF/resolve/main/Qwen3-1.7B-Q4_K_M.gguf",
+      "fileName": "Qwen3-1.7B-Q4_K_M.gguf",
+      "byteSize": 1107409472,
+      "isDefault": false,
+      "usesThinking": true,
+      "mayExceedMemoryOn8GB": false,
+      "promptFormat": "chatml"
+    },
+    {
+      "id": "qwen3-4b-q4",
+      "name": "Qwen3 4B Q4_K_M",
+      "shortName": "Qwen3 4B",
+      "downloadURL": "https://huggingface.co/bartowski/Qwen_Qwen3-4B-GGUF/resolve/main/Qwen_Qwen3-4B-Q4_K_M.gguf",
+      "fileName": "Qwen_Qwen3-4B-Q4_K_M.gguf",
+      "byteSize": 2497280960,
+      "isDefault": false,
+      "usesThinking": true,
+      "mayExceedMemoryOn8GB": false,
+      "promptFormat": "chatml"
+    },
+    {
+      "id": "gemma3-1b-q4",
+      "name": "Gemma 3 1B Q4_K_M",
+      "shortName": "Gemma 3 1B",
+      "downloadURL": "https://huggingface.co/unsloth/gemma-3-1b-it-GGUF/resolve/main/gemma-3-1b-it-Q4_K_M.gguf",
+      "fileName": "gemma-3-1b-it-Q4_K_M.gguf",
+      "byteSize": 806058272,
+      "isDefault": false,
+      "usesThinking": false,
+      "mayExceedMemoryOn8GB": false,
+      "promptFormat": "gemma3"
+    }
+  ]
+}

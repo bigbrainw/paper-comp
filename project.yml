@@ -1,0 +1,137 @@
+name: PaperComp
+options:
+  bundleIdPrefix: com.elijah
+  deploymentTarget:
+    iOS: "18.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    # Set DEVELOPMENT_TEAM (and optionally PRODUCT_BUNDLE_IDENTIFIER) for device builds.
+    CODE_SIGN_STYLE: Automatic
+targets:
+  PaperComp:
+    type: application
+    platform: iOS
+    sources:
+      - path: PaperComp
+        excludes:
+          - Resources/Assets.xcassets
+          - Resources/PrivacyInfo.xcprivacy
+          - Resources/SamplePaper-2305.13245.pdf
+      - path: PaperComp/Resources/Assets.xcassets
+      - path: PaperComp/Resources/PrivacyInfo.xcprivacy
+        buildPhase: resources
+      # Bundled CC BY 4.0 sample paper (Library → "Try a sample paper"), shipped in Release too.
+      - path: PaperComp/Resources/SamplePaper-2305.13245.pdf
+        buildPhase: resources
+      # Settings → About shows these offline. Single source of truth is site/ (also the hosted pages).
+      - path: site/privacy.html
+        buildPhase: resources
+      - path: site/support.html
+        buildPhase: resources
+      - path: PaperCompSearch
+        excludes:
+          - "Tests/**"
+      - path: PaperCompLocal
+        excludes:
+          - "Tests/**"
+          - "ModelCatalog.json"
+      - path: PaperCompLocal/ModelCatalog.json
+        buildPhase: resources
+    postbuildScripts:
+      - name: Embed llama (device only)
+        path: Scripts/embed-llama-device.sh
+        basedOnDependencyAnalysis: false
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.elijah.papercomp
+        TARGETED_DEVICE_FAMILY: "2"
+        INFOPLIST_FILE: PaperComp/Resources/Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]:
+          - $(inherited)
+          - $(PROJECT_DIR)/Vendor/llama.xcframework/ios-arm64
+        OTHER_LDFLAGS[sdk=iphoneos*]:
+          - $(inherited)
+          - -framework
+          - llama
+    entitlements:
+      path: PaperComp/Resources/PaperComp.entitlements
+      properties:
+        com.apple.developer.kernel.increased-memory-limit: true
+    info:
+      path: PaperComp/Resources/Info.plist
+      properties:
+        CFBundleDisplayName: PaperComp
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        ITSAppUsesNonExemptEncryption: false
+        UILaunchScreen:
+          UIColorName: RiceBackground
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: true
+        UIRequiresFullScreen: false
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        LSSupportsOpeningDocumentsInPlace: false
+        UIFileSharingEnabled: true
+        CFBundleURLTypes:
+          - CFBundleURLName: com.elijah.papercomp.oauth
+            CFBundleURLSchemes:
+              - papercomp
+        CFBundleDocumentTypes:
+          - CFBundleTypeName: PDF Document
+            CFBundleTypeRole: Viewer
+            LSHandlerRank: Alternate
+            LSItemContentTypes:
+              - com.adobe.pdf
+  PaperCompTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: PaperCompTests
+      - path: PaperCompSearch/Tests
+      - path: PaperCompLocal/Tests
+    dependencies:
+      - target: PaperComp
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.elijah.papercomp.tests
+        TARGETED_DEVICE_FAMILY: "2"
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/PaperComp.app/PaperComp"
+        BUNDLE_LOADER: "$(TEST_HOST)"
+        FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]:
+          - $(inherited)
+          - $(PROJECT_DIR)/Vendor/llama.xcframework/ios-arm64
+  PaperCompUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: PaperCompUITests
+    dependencies:
+      - target: PaperComp
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.elijah.papercomp.uitests
+        TARGETED_DEVICE_FAMILY: "2"
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_TARGET_NAME: PaperComp
+schemes:
+  PaperComp:
+    build:
+      targets:
+        PaperComp: all
+        PaperCompTests: [test]
+        PaperCompUITests: [test]
+    test:
+      targets:
+        - PaperCompTests
+        - PaperCompUITests

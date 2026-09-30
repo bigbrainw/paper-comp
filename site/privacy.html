@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PaperComp Privacy Policy</title>
+<meta name="description" content="How PaperComp handles your papers, notes, and search requests.">
+<style>
+  :root {
+    --rice: #F6F1E7; --surface: #FBF8F2; --deep: #ECE3D2;
+    --ink: #2E2922; --ink-soft: #7D7264; --accent: #8A6536;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --rice: #1E1B17; --surface: #27231E; --deep: #332E27;
+            --ink: #EFE8DA; --ink-soft: #A89D8C; --accent: #C9A273; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--rice); color: var(--ink);
+         font: 17px/1.6 ui-rounded, -apple-system, "SF Pro Rounded", system-ui, sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 48px 16px 80px; }
+  h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 4px; }
+  h2 { font-size: 1.2rem; margin: 40px 0 8px; }
+  p, li { color: var(--ink); }
+  .meta { color: var(--ink-soft); margin: 0 0 32px; }
+  .summary { background: var(--surface); border-radius: 14px; padding: 20px 24px;
+             box-shadow: 0 4px 12px rgb(46 41 34 / 8%); }
+  .summary ul { margin: 8px 0 0; padding-left: 20px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.95rem; margin-top: 8px; }
+  th, td { text-align: left; vertical-align: top; padding: 10px 8px;
+           border-bottom: 0.5px solid var(--deep); }
+  th { color: var(--ink-soft); font-weight: 600; }
+  a { color: var(--accent); }
+  @media (max-width: 560px) {
+    table, thead, tbody, tr, th, td { display: block; }
+    thead { display: none; }
+    tr { border-bottom: 0.5px solid var(--deep); padding: 8px 0; }
+    td { border: 0; padding: 2px 0; }
+    td:first-child { font-weight: 600; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>PaperComp Privacy Policy</h1>
+  <p class="meta">Last updated: September 27, 2026</p>
+
+  <div class="summary">
+    <strong>The short version</strong>
+    <ul>
+      <li>PaperComp has no accounts, no analytics, no ads, and no tracking. We (the developer) do not run servers that receive your data.</li>
+      <li>Your PDFs, handwriting, notes, and search history stay on your iPad.</li>
+      <li>When you use search, only the text needed for that search goes to the services listed below. Nothing is sent until you start a search.</li>
+      <li>GPT answers are optional. They use your own OpenAI API key and are sent directly from your iPad to OpenAI, and only after you agree.</li>
+    </ul>
+  </div>
+
+  <h2>1. Who we are</h2>
+  <p>PaperComp is an iPad app for reading and annotating papers, made by an independent developer ("we", "us"). Contact details are at the end of this policy.</p>
+
+  <h2>2. Data that stays on your iPad</h2>
+  <p>The following is stored only in the app's private storage on your device. We cannot see or access it:</p>
+  <ul>
+    <li>PDFs you import, notebooks, and note pages</li>
+    <li>Pencil drawings, highlights, and handwriting</li>
+    <li>Your search history and saved answers</li>
+    <li>Settings, and the on-device language models you download</li>
+    <li>Your OpenAI API key, if you add one. It is kept in the iOS Keychain on this device only and is not synced.</li>
+  </ul>
+  <p>Text recognition (OCR) of selected regions and answers from the on-device model are computed entirely on your iPad.</p>
+  <p>Your app data may be included in your device backups (iCloud or computer backups), according to your iOS settings. Downloaded models are excluded from backups. Deleting the app deletes its data from the device.</p>
+
+  <h2>3. Data sent to other services when you use search</h2>
+  <p>When you select part of a page and ask a question, PaperComp may contact the services below to find sources and answers. They receive the request directly from your iPad, along with your IP address and basic technical information, as with any web request. Each service handles that data under its own privacy policy.</p>
+  <table>
+    <thead><tr><th>Service</th><th>When</th><th>What is sent</th></tr></thead>
+    <tbody>
+      <tr><td><a href="https://foundation.wikimedia.org/wiki/Policy:Privacy_policy">Wikipedia</a></td>
+          <td>Explain, Define, and similar questions</td>
+          <td>A short search query built from the selected term and a few topic keywords</td></tr>
+      <tr><td><a href="https://allenai.org/privacy-policy">Semantic Scholar</a>, <a href="https://info.arxiv.org/help/policies/privacy_policy.html">arXiv</a>, <a href="https://openalex.org/">OpenAlex</a>, <a href="https://www.doi.org/privacy-policy">doi.org</a></td>
+          <td>Finding a cited or related paper</td>
+          <td>A search query such as a paper title, author names, or a DOI</td></tr>
+      <tr><td><a href="https://consensus.app/home/privacy-policy/">Consensus</a></td>
+          <td>Paper search, if enabled in Settings</td>
+          <td>A search query. If you connect a Consensus account, sign-in happens on Consensus's site and PaperComp stores the access token in the Keychain.</td></tr>
+      <tr><td>Source web pages</td>
+          <td>When an answer cites a link or DOI</td>
+          <td>A normal request for that page, so the answer can quote it</td></tr>
+      <tr><td><a href="https://huggingface.co/privacy">Hugging Face</a></td>
+          <td>When you download an on-device model</td>
+          <td>A download request for the model file. No paper content is sent.</td></tr>
+      <tr><td><a href="https://openai.com/policies/privacy-policy/">OpenAI</a></td>
+          <td>Only if you add your own API key, allow GPT, and ask with GPT</td>
+          <td>Your question, the selected text, nearby text from the paper, the paper title, and an image of the selected region</td></tr>
+    </tbody>
+  </table>
+
+  <h2>4. Optional GPT answers with your own key</h2>
+  <p>PaperComp does not include an OpenAI account. To use GPT answers, you enter your own OpenAI API key. Before the first GPT request, the app asks for your permission and explains what will be sent. You can withdraw that permission or remove your key at any time in Settings. Without a key or permission, searches use the on-device model.</p>
+  <p>GPT requests go straight from your iPad to OpenAI and are billed to your OpenAI account. Content you send to OpenAI through the API is handled under <a href="https://openai.com/policies/">OpenAI's API terms and policies</a>, which you accepted when you created your key. The monthly spending estimate shown in Settings is calculated on your device.</p>
+
+  <h2>5. What we do not do</h2>
+  <ul>
+    <li>We do not collect, sell, rent, or share your personal information.</li>
+    <li>We do not use analytics, advertising, or tracking SDKs, and we do not track you across apps or websites.</li>
+    <li>We do not use your papers, notes, or questions to train models.</li>
+  </ul>
+
+  <h2>6. Children</h2>
+  <p>PaperComp is not directed at children under 13, and we do not knowingly collect information from children.</p>
+
+  <h2>7. Your choices</h2>
+  <ul>
+    <li>Use only the on-device model by leaving the OpenAI key empty.</li>
+    <li>Turn off Consensus, or disconnect your Consensus account, in Settings.</li>
+    <li>Delete individual papers, notebooks, and downloaded models in the app, or delete the app to remove all its data.</li>
+  </ul>
+  <p>Because we do not hold your data, requests to access or delete data held by a service listed above should go to that service.</p>
+
+  <h2>8. Changes</h2>
+  <p>If this policy changes, we will update this page and the date at the top. Significant changes will also be noted in the app's release notes.</p>
+
+  <h2>9. Contact</h2>
+  <p>Questions about this policy: <a href="mailto:elijah0904@gmail.com">elijah0904@gmail.com</a></p>
+</main>
+</body>
+</html>

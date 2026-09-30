@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PaperComp Support</title>
+<meta name="description" content="How to use PaperComp: importing papers, drawing with Apple Pencil, searching with the on-device model, and optional GPT answers.">
+<style>
+  :root {
+    --rice: #F6F1E7; --surface: #FBF8F2; --deep: #ECE3D2;
+    --ink: #2E2922; --ink-soft: #7D7264; --accent: #8A6536;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --rice: #1E1B17; --surface: #27231E; --deep: #332E27;
+            --ink: #EFE8DA; --ink-soft: #A89D8C; --accent: #C9A273; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--rice); color: var(--ink);
+         font: 17px/1.6 ui-rounded, -apple-system, "SF Pro Rounded", system-ui, sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 48px 16px 80px; }
+  h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 4px; }
+  h2 { font-size: 1.2rem; margin: 40px 0 8px; }
+  h3 { font-size: 1rem; margin: 24px 0 4px; }
+  p, li { color: var(--ink); }
+  .meta { color: var(--ink-soft); margin: 0 0 32px; }
+  .summary { background: var(--surface); border-radius: 14px; padding: 20px 24px;
+             box-shadow: 0 4px 12px rgb(46 41 34 / 8%); }
+  .summary p { margin: 0; }
+  .summary p + p { margin-top: 8px; }
+  .path { background: var(--deep); border-radius: 6px; padding: 1px 6px; white-space: nowrap; }
+  a { color: var(--accent); }
+  footer { margin-top: 48px; color: var(--ink-soft); font-size: 0.95rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>PaperComp Support</h1>
+  <p class="meta">Help for PaperComp on iPad</p>
+
+  <div class="summary">
+    <p>PaperComp is an iPad app for reading research papers and writing on them with Apple Pencil.</p>
+    <p>Box any part of a page to get an explanation, a definition, or the cited paper, answered by a model that runs on your iPad, or by GPT if you add your own OpenAI key.</p>
+  </div>
+
+  <h2>Getting started</h2>
+  <ul>
+    <li><strong>Import a PDF.</strong> In the library, tap <strong>+</strong> and choose <strong>Import PDF</strong>. You can also share a PDF from the Files app, Safari, or Mail and choose PaperComp. PaperComp keeps its own copy, so your original file is never changed. To look around first, tap <strong>Try a sample paper</strong> in the empty library (or <strong>+</strong> → <strong>Add sample paper</strong>).</li>
+    <li><strong>Make a notebook.</strong> Tap <strong>+</strong> and choose <strong>New notebook</strong> for blank, lined, grid, dotted, or Cornell pages. Inside any paper, use the <strong>•••</strong> menu and <strong>Add Page</strong> to insert a note page next to the one you are reading.</li>
+    <li><strong>Draw.</strong> Pick the pen, highlighter, or eraser in the toolbar and write with Apple Pencil. Your finger scrolls and zooms.</li>
+    <li><strong>Share.</strong> In the <strong>•••</strong> menu, <strong>Share annotated PDF</strong> exports the paper with your ink and note pages.</li>
+  </ul>
+
+  <h2>Using search</h2>
+  <ol>
+    <li>Tap the <strong>Search</strong> tool (the magnifying glass) in the reader toolbar.</li>
+    <li>Draw a box around a word, sentence, equation, or figure with Apple Pencil or one finger. While Search is on, scroll with two fingers. You can switch to a freeform lasso in <span class="path">Settings → Reader → Selection shape</span>.</li>
+    <li>Tap a quick chip, such as <strong>Explain</strong>, <strong>Define</strong>, <strong>Find cited paper</strong>, <strong>Simpler</strong>, or <strong>Related work</strong>, or type your own question.</li>
+  </ol>
+  <p>Answers come from the on-device model, which you download once. Open <span class="path">Settings → Local models</span> and tap <strong>Download</strong> next to <strong>Gemma 4 E2B</strong> (the default). It is about 4.1 GB including its vision part, so use Wi-Fi; on a fast connection it takes several minutes. After that, search works on the model without an internet connection, though finding sources such as Wikipedia or cited papers needs one.</p>
+  <p>The on-device model runs only on a real iPad. Larger models give better answers but need more memory; the list warns you when a model may be too large for your iPad.</p>
+  <p>Past searches are saved on the page as small markers. Tap one to see its answer again. You can hide them with <span class="path">Settings → Reader → Show search markers</span>.</p>
+
+  <h2>Optional: GPT with your own OpenAI key</h2>
+  <p>PaperComp works fully without an OpenAI account. If you want GPT answers as well:</p>
+  <ol>
+    <li>Create an API key at <a href="https://platform.openai.com/api-keys">platform.openai.com/api-keys</a>. OpenAI API use is billed by OpenAI to your account, separately from any ChatGPT subscription.</li>
+    <li>In PaperComp, open <span class="path">Settings → GPT (your own OpenAI key)</span>, paste the key, and tap <strong>Save</strong>. <strong>Test key</strong> checks that it works.</li>
+    <li>Choose <strong>OpenAI</strong> or <strong>Auto</strong> under <span class="path">Search engine</span>. Auto uses the local model when one is ready and GPT otherwise. You can also tap <strong>Ask GPT instead</strong> on the search card to re-run an answer with GPT.</li>
+  </ol>
+  <p>Before the first GPT request, PaperComp asks your permission and lists what will be sent: the selected text, nearby text and the paper title, an image of the area you boxed, and your question. You can turn this off with <strong>Allow sending selections to OpenAI</strong> in Settings.</p>
+  <p>Your key is stored in the iOS Keychain on this iPad only and is not synced. Requests go straight from your iPad to OpenAI. <strong>Monthly GPT limit</strong> in Settings stops GPT requests once an estimate of your spending reaches the amount you set. It is calculated on your iPad, so check your real usage in your OpenAI account. To stop using GPT, tap <strong>Remove</strong>.</p>
+
+  <h2>FAQ</h2>
+
+  <h3>The model download fails or says "Not enough free disk space."</h3>
+  <p>The default model needs about 4.1 GB free, plus a little extra. Free up space in <span class="path">iPad Settings → General → iPad Storage</span>, then tap <strong>Download</strong> again. For a smaller download, try <strong>Gemma 3 1B</strong> or <strong>Qwen3 1.7B</strong>, which are faster but give weaker answers. If a download stops because of a network problem, tap <strong>Download</strong> to try again.</p>
+
+  <h3>The answers are weak or wrong.</h3>
+  <p>Small on-device models make mistakes. Box a tighter area around exactly what you want explained, and ask a specific question. For better answers, download a larger model such as <strong>Gemma 4 E4B</strong> if your iPad has the memory, or add your own OpenAI key and tap <strong>Ask GPT instead</strong>. If you see "Try a smaller model", the current model is too large for your iPad's free memory.</p>
+
+  <h3>My finger draws instead of scrolling (or the other way round).</h3>
+  <p>Go to <span class="path">Settings → Apple Pencil → Draw with finger</span>. Off: only Apple Pencil draws with the pen, highlighter, and eraser, and your finger scrolls and zooms. On: your finger draws too, and you scroll with two fingers. The Search tool works with your finger either way: drag one finger to draw a box, and scroll with two fingers.</p>
+
+  <h3>Where are my files stored? Are they backed up?</h3>
+  <p>Papers, notebooks, ink, and search history are stored inside PaperComp on your iPad. There is no PaperComp account or cloud sync. App data is included in your iCloud or computer backup, depending on your iOS settings. Downloaded models are not backed up, so you download them again after restoring. To keep a separate copy of a paper with your notes, use <strong>Share annotated PDF</strong>.</p>
+
+  <h3>How do I delete my data?</h3>
+  <ul>
+    <li>Paper or notebook: in the library, touch and hold it, then tap <strong>Delete</strong>.</li>
+    <li>A search marker: open it and tap <strong>Delete</strong>.</li>
+    <li>Downloaded models: <span class="path">Settings → Local models</span>, then <strong>Delete</strong>.</li>
+    <li>OpenAI key: <span class="path">Settings → GPT</span>, then <strong>Remove</strong>.</li>
+    <li>Everything: delete the PaperComp app.</li>
+  </ul>
+
+  <h2>Sample paper</h2>
+  <p>The sample paper included in the app is “GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints” by Joshua Ainslie, James Lee-Thorp, Michiel de Jong, Yury Zemlyanskiy, Federico Lebrón, and Sumit Sanghai (<a href="https://arxiv.org/abs/2305.13245">arXiv:2305.13245</a>, v3), licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. It is included unmodified.</p>
+
+  <h2>Contact</h2>
+  <p>Questions, bug reports, or feature requests: <a href="mailto:elijah0904@gmail.com">elijah0904@gmail.com</a>. Please include your iPad model and iPadOS version.</p>
+
+  <footer>
+    <a href="privacy.html">Privacy Policy</a> · <a href="index.html">PaperComp home</a>
+  </footer>
+</main>
+</body>
+</html>
